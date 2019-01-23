@@ -1,5 +1,5 @@
 The purpose of this repo is to house utilities for connecting eternal warcry
-and shifstoned.
+and shiftstoned.
 
 Currently, this repo only contains a single utility, getShiftstonedUrl. 
 This can be used on an EWC deck detail page (e.g. 
