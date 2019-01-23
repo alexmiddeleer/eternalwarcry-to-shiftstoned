@@ -1,4 +1,26 @@
 (function() {
+  var exportSplit = document.getElementById('export-deck-text').innerHTML.split('\n');
+  var regex = /^(\d+) .+Set(\d+) #(\d+).$/;
+  var marketTriplet = [2, 0, 0];
+  var tripletsArray = [];
+  for (var i = 0; i < exportSplit.length; i++) {
+    var matches = exportSplit[i].match(regex);
+    if (!matches) {
+      if (exportSplit[i].indexOf('MARKET') > 0) {
+        tripletsArray = tripletsArray.concat(marketTriplet);
+      }
+    } else {
+      var triplet = [parseInt(matches[1], 10), parseInt(matches[2], 10), parseInt(matches[3], 10)];
+      tripletsArray = tripletsArray.concat(triplet);
+    }
+  }
+
+  var encodedDeck = encodeValues(tripletsArray);
+  var deckName = document.querySelector('#body-wrapper > div.container > div.align-c > h1').innerHTML;
+  var deckAuthor = document.querySelector('#body-wrapper > div.container > div.align-c > div:nth-child(3) > h3 > a').innerHTML;
+  var url = 'https://www.shiftstoned.com/epc/?';
+  url += 'd=' + encodedDeck + '&t=' + encodeURIComponent(deckName + ' by ' + deckAuthor);
+  console.log(url);
 
   function encodeValues(values) {
     var code, error;
@@ -50,22 +72,4 @@
     return code;
   }
 
-  var exportSplit = document.getElementById('export-deck-text').innerHTML.split('\n');
-  var regex = /^(\d+) .+Set(\d+) #(\d+).$/;
-  var marketTriplet = [2, 0, 0];
-  var tripletsArray = [];
-  for (var i = 0; i < exportSplit.length; i++) {
-    var matches = exportSplit[i].match(regex);
-    if (!matches) {
-      if (exportSplit[i].indexOf('MARKET') > 0) {
-        tripletsArray = tripletsArray.concat(marketTriplet);
-      }
-    } else {
-      var triplet = [parseInt(matches[1], 10), parseInt(matches[2], 10), parseInt(matches[3], 10)];
-      tripletsArray = tripletsArray.concat(triplet);
-    }
-  }
-  console.log(exportSplit);
-  console.log(tripletsArray);
-  console.log(encodeValues(tripletsArray));
 })();
