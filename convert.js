@@ -73,5 +73,3 @@
     return code;
   }
 })();
-
-console.log(window.getShiftstonedUrl());
