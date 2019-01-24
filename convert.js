@@ -21,8 +21,8 @@
     }
   
     var encodedDeck = encodeValues(tripletsArray);
-    var deckName = document.querySelector('#body-wrapper > div.container > div.align-c > h1').innerHTML;
-    var deckAuthor = document.querySelector('#body-wrapper > div.container > div.align-c > div:nth-child(3) > h3 > a').innerHTML;
+    var deckName = document.getElementById('deck-title').innerHTML;
+    var deckAuthor = document.getElementById('deck-author').innerHTML;
     var url = 'https://www.shiftstoned.com/epc/?';
     return url + 'd=' + encodedDeck + '&t=' + encodeURIComponent('[' + deckAuthor + '] ' + deckName);
   };
