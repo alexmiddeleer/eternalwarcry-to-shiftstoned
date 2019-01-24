@@ -1,3 +1,7 @@
+/**
+ * By AlexMA
+ * 
+ */
 (function() {
   window.getShiftstonedUrl = function() {
     var exportSplit = document.getElementById('export-deck-text').innerHTML.split('\n');
@@ -20,7 +24,7 @@
     var deckName = document.querySelector('#body-wrapper > div.container > div.align-c > h1').innerHTML;
     var deckAuthor = document.querySelector('#body-wrapper > div.container > div.align-c > div:nth-child(3) > h3 > a').innerHTML;
     var url = 'https://www.shiftstoned.com/epc/?';
-    return url + 'd=' + encodedDeck + '&t=' + encodeURIComponent(deckName + ' by ' + deckAuthor);
+    return url + 'd=' + encodedDeck + '&t=' + encodeURIComponent('[' + deckAuthor + '] ' + deckName);
   };
 
   function encodeValues(values) {
